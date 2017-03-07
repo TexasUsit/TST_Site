@@ -182,7 +182,7 @@ a {
 .header .tint{
 	 z-index: 1;
 	 height: 1002px;
-	 background: rgba(0, 0, 0, 0.65);
+	 background: rgba(0, 0, 0, 0.55);
   	 background-size: cover;
      -webkit-clip-path: polygon(0% 100%, 0% 0%, 100% 0%, 100% 80%);
      clip-path: polygon(0% 100%, 0% 0%, 100% 0%, 100% 80%);
