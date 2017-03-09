@@ -279,7 +279,7 @@ a {
       text-align: left; } }
   .register-now a.button {
     display: inline-block;
-    font-size: 1.5em; }
+    font-size: 1.2em; }
     @media all and (max-width: 480px) {
       .register-now a.button {
         text-align: center;
@@ -294,7 +294,7 @@ a {
   text-decoration: none;
   color: white;
   text-transform: uppercase;
-  line-height: 60px;
+  line-height: 50px;
   font-weight: bold;
   font-family: "Roboto Condensed", sans-serif; }
   .button:hover {
