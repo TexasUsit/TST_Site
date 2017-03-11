@@ -929,7 +929,14 @@ a {
         width: 100%; } }
   .social div {
     padding: 0 60px;
-    max-width: 1180px; }
+      max-width: 1180px; }
+    @media all and (max-width: 1180px) {
+        .social div {
+            align-items: center;
+            text-align: center;
+            padding: 0 0;
+        } 
+    }
   .social h2 {
     margin-bottom: 0; }
   .social .subtitle {
