@@ -1,0 +1,766 @@
+doctype html
+html(lang='en')
+  head
+    meta(charset='utf-8')
+    title Texas Shark Tank - 
+    meta(name='keywords', content='')
+    meta(name='description', content='')
+    meta(name='viewport', content='width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0')
+    link(href='font-awesome-4.2.0/css/font-awesome.min.css', rel='stylesheet')
+    link(href='scripts/jquery-ui-1.11.2/jquery-ui.min.css', rel='stylesheet')
+    link(href='animate.min.css', rel='stylesheet')
+    link(href='style.css', rel='stylesheet', type='text/css')
+    | &#x9;
+    link(rel='stylesheet', href='//cdn.jsdelivr.net/jquery.bootstrapvalidator/0.5.0/css/bootstrapValidator.min.css')
+    // Google Map
+    script(src='//maps.googleapis.com/maps/api/js?sensor=false')
+    // Latest compiled and minified CSS
+    link(rel='stylesheet', href='//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css')
+    // jQuery library
+    script(src='//ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js')
+    // Latest compiled JavaScript
+    script(src='//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js')
+    | &#x9;
+    script.
+      function initialize() {
+      var myLatlng = new google.maps.LatLng(30.28491, -97.7360057);
+      var map_options = {
+      zoom: 16,
+      mapTypeId: google.maps.MapTypeId.ROADMAP,
+      center: myLatlng,
+      scrollwheel: false,
+      disableDefaultUI: true
+      }
+      var map = new google.maps.Map(document.getElementById('map_canvas'), map_options)
+      var myIcon = new google.maps.MarkerImage('images/map_icon.png', null, null, null, new google.maps.Size(36,54));
+      var marker = new google.maps.Marker({
+      position: myLatlng,
+      map: map,
+      icon: myIcon
+      });
+      /* Remove if you dont want B/W Google Map */
+      /*
+      var styles = [
+      {
+      featureType: "all",
+      stylers: [
+      { saturation: -100 }
+      ]
+      }
+      ];
+      map.setOptions({styles: styles});
+      */
+      }
+      google.maps.event.addDomListener(window, 'load', initialize);
+    | &#x9;
+    script(src='validation-functions.js')
+    // Google Map Ends!
+  body
+    .page
+      #modal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='myModalLabel')
+        .modal-dialog(role='document')
+          .modal-content
+            .modal-header
+              button.close(type='button', data-dismiss='modal', aria-label='Close')
+                span(aria-hidden='true') &times;
+            |           
+            .modal-body
+              .registration
+                .container
+                  h2 Registration
+                  |       
+                  p.subtitle
+                    | Registration ends 
+                    strong March 22nd
+                  |       
+                  h3 Fill out your information
+                  // register form
+                  .form
+                    form#register-form(method='POST')
+                      input(type='text', name='Contact Email Address', placeholder='Contact Email Address')
+                      | &#x9;&#x9;  
+                      input(type='text', name='Competitor #1 Name', placeholder='Team member #1')
+                      | &#x9;&#x9;  
+                      select(name='Competitor #1 Year')
+                        option(value='') Select School Year
+                        |   &#x9;&#x9;&#x9;
+                        option(value='Freshman') Freshman
+                        | &#x9;&#x9;&#x9;
+                        option(value='Sophomore') Sophomore
+                        | &#x9;&#x9;&#x9;
+                        option(value='Junior') Junior
+                        | &#x9;&#x9;&#x9;
+                        option(value='Senior') Senior
+                        | &#x9;&#x9;&#x9;
+                        option(value='Other') Other
+                      | &#x9;&#x9;  
+                      input(type='text', name='Competitor #2 Name', placeholder='Team member #2')
+                      | &#x9;&#x9;  
+                      select(name='Competitor #2 Year')
+                        option(value='') Select School Year
+                        |   &#x9;&#x9;&#x9;
+                        option(value='Freshman') Freshman
+                        | &#x9;&#x9;&#x9;
+                        option(value='Sophomore') Sophomore
+                        | &#x9;&#x9;&#x9;
+                        option(value='Junior') Junior
+                        | &#x9;&#x9;&#x9;
+                        option(value='Senior') Senior
+                        | &#x9;&#x9;&#x9;
+                        option(value='Other') Other
+                      | &#x9;&#x9;&#x9;
+                      input(type='text', name='Competitor #3 Name', placeholder='Team member #3')
+                      | &#x9;&#x9;  
+                      select(name='Competitor #3 Year')
+                        option(value='') Select School Year
+                        |   &#x9;&#x9;&#x9;
+                        option(value='Freshman') Freshman
+                        | &#x9;&#x9;&#x9;
+                        option(value='Sophomore') Sophomore
+                        | &#x9;&#x9;&#x9;
+                        option(value='Junior') Junior
+                        | &#x9;&#x9;&#x9;
+                        option(value='Senior') Senior
+                        | &#x9;&#x9;&#x9;
+                        option(value='Other') Other
+                      | &#x9;&#x9;&#x9;
+                      input(type='text', name='Competitor #4 Name', placeholder='Team member #4')
+                      | &#x9;&#x9;  
+                      select(name='Competitor #4 Year')
+                        option(value='') Select School Year
+                        |   &#x9;&#x9;&#x9;
+                        option(value='Freshman') Freshman
+                        | &#x9;&#x9;&#x9;
+                        option(value='Sophomore') Sophomore
+                        | &#x9;&#x9;&#x9;
+                        option(value='Junior') Junior
+                        | &#x9;&#x9;&#x9;
+                        option(value='Senior') Senior
+                        | &#x9;&#x9;&#x9;
+                        option(value='Other') Other
+                      |           
+                      |           
+                      input#program(type='text', name='program', placeholder='Pay the deposit at the link below', disabled='disabled')
+                      // prices
+                      a(href='http://www.texasusit.org/register')
+                        #price-modal.price
+                          div
+                            p.amount $60
+                            |           
+                            h4(style='color: black;')
+                              | Refundable 
+                              span Registration Fee
+                            |           
+                            p Registration Fee is refunded once your team sends a proposal in by March 22nd
+                      // prices ends!
+                      button(name='submit', type='submit') Complete Registration
+                  // register form ends!
+      // Successful registration modal
+      #success.modal.fade(tabindex='-1', role='dialog', aria-labelledby='myModalLabel')
+        .modal-dialog(role='document')
+          .modal-content
+            .modal-header
+              button.close(type='button', data-dismiss='modal', aria-label='Close')
+                span(aria-hidden='true') &times;
+              |         
+              h4#myModalLabel.modal-title Successful registration!
+            |       
+            .modal-body
+              | We have received your registration information. Please be sure to go to texasusit.org and pay the refundable deposit. We cannot sign up your team until you do so!
+            |       
+            .modal-footer
+              button.btn.btn-default(type='button', data-dismiss='modal') Close
+      // menu
+      .menu
+        img(src='images/logo-white.png', style='width: 50px; float: left; margin-left: 20px; margin-top: 9px; margin-right: 20px;')
+        |       
+        ul
+          li
+            a#about-link(href='#about') about
+          |   
+          |         
+          li
+            a#schedule-link(href='#schedule') schedule
+          |         
+          li
+            a#sponsors-link(href='#sponsors') sponsors
+          |         
+          li
+            a#location-link(href='#location') location
+          |         
+          li
+            a#contact-link.open-contact-form(href='#contact') contact us
+      // menu ends!
+      // header
+      .header
+        .tint
+          // header container
+          .container
+            // logo or main heading
+            h1(style='font-size: 42px;')
+              a(href='#') Texas Shark Tank 2017
+            // logo or main heading ends!
+            // subtitle
+            p.subtitle
+              | The largest startup competition at 
+              b The University of Texas at Austin
+              // subtitle ends!
+              // when
+              .when
+                .icon-holder
+                  i.fa.fa-calendar
+                |         
+                div
+                  p
+                    strong When
+                  |           
+                  p
+                    span 1st April 2017
+                    br
+                    | Starts at 9am
+              // when ends!
+              // where
+              .where
+                .icon-holder
+                  i.fa.fa-map-marker
+                |         
+                div
+                  p
+                    strong Where
+                  |           
+                  p
+                    span UT Austin
+                    br
+                    a(href='#')
+              // where ends!
+              // register
+              .register-now
+                p Join our Slack!
+                | &#x9;&#x9;  
+                a.button(href='https://texassharktank.slack.com/shared_invite/MTUwNjAzMTcxMjA0LTE0ODg4NDk4ODktYzEwY2RjMGUzYg', data-toggle='modal')
+                  img(src='images/slack_bw.png', width='130px', style='margin-bottom: 10px;')
+                |         
+                p Register your team now!
+                |         
+                a.button(href='https://docs.google.com/forms/d/e/1FAIpQLSd0lWsQSLlWtJJLV1dGeiPUs2r13pq_O3xXsSbZFs5GfF5cuw/viewform?usp=sf_link', data-toggle='modal') Register Now
+              // register ends!
+          // header container ends!
+      // header ends!
+      // topics
+      .topics
+        a#about.anchor
+        |     
+        .container
+          p#main-description
+            strong(style='color: black;') TEXAS SHARK TANK
+            |  (TST) is a one-of-a-kind entrepreneurial case competition hosted by the 
+            strong
+              a(href='http://texasusit.org') University Securities Investment Team
+              |  and the 
+              a(href='http://txconvergent.org') Texas Convergent
+            | . TST gives UT students the chance to pitch a business idea to a panel of angel investors, investment professionals, and serial entrepreneurs. Students will come up with their own idea, develop a business plan/implementation strategy, and a product mockup to pitch to judges. Texas Convergent will be hosting a two week incubator program to assist competition participants in building out their ideas. Texas Shark Tank starts on March 7th, culminating with the 
+            strong Pitch Day on April 1.
+          | &#x9;&#x9;
+          |       
+          h3
+            strong Over four weeks,
+            br
+            | creative experts will make great ideas happen.
+          |       
+          p
+          // single topic
+          div
+            i.fa.fa-line-chart.fa-2x
+            |         
+            h4 Research
+            |         
+            p
+              | Determine if your idea is viable by analyzing the market, the needs of the target audience, costs and benefits, and competition.
+          // single topic ends!
+          // single topic
+          div
+            i.fa.fa-sitemap.fa-2x
+            |         
+            h4 Mock
+            |         
+            p
+              | Leverage 
+              a(href='http://txconvergent.org/', target='_blank') Texas Convergent
+              | &apos;s interdisciplinary talent and group structure to build technical mockups accompanying your team&apos;s business model.
+          // single topic ends!
+          // single topic
+          div
+            i.fa.fa-lightbulb-o.fa-2x
+            |         
+            h4 Pitch
+            |         
+            p
+              | During the event, get advice from experienced industry folk, an opportunity to network with talent, and potentially seed funding from investors.
+          // single topic ends!
+      // topics ends!
+      a#schedule.anchor
+      // schedule
+      .schedule
+        .container
+          h2 Competition Schedule
+          |       
+          p.subtitle
+          |       
+          .tabs
+            ul
+              li
+                a(href='#tabs-1') Stage 1
+              |           
+              li
+                a(href='#tabs-2') Stage 2
+              |           
+              li
+                a(href='#tabs-3') Pitch Day
+            // day
+            #tabs-1.day
+              // single event
+              .event.extend
+                // event time
+                .event-time
+                  strong March 7th:
+                  |  8:45 - 9:15 
+                  span
+                    i.fa.fa-angle-up
+                // event time ends!
+                // event details
+                .event-info
+                  div
+                    h4
+                      a(href='#') Kickoff
+                    |                   
+                    p.speaker
+                      strong GSB 2.124
+                      br
+                      | Start of Competition
+                    |                   
+                    |                   
+                    p Come learn about the competition logistics, requirements, and timeline. 
+                    |                   
+                    p
+                      strong One person from each team is required.
+                // event details ends!
+              // single event ends!
+              // single event
+              .event.extend
+                // event time
+                .event-time
+                  strong March 7th - 20th
+                  |  
+                  span
+                    i.fa.fa-angle-up
+                // event time ends!
+                // event details
+                .event-info
+                  div
+                    h4 Team Formation and Work on Proposal
+                    |                 
+                    p.speaker
+                      strong One Pager and One Minute Video
+                      br
+                    |                 
+                    p Details to come soon.
+                // event details ends!
+              // single event ends!
+              // single event
+              .event.extend
+                // event time
+                .event-time
+                  strong March 20th
+                  |  
+                  span
+                    i.fa.fa-angle-up
+                // event time ends!
+                // event details
+                .event-info
+                  div
+                    h4
+                      a(href='#')
+                    |                 
+                    p.speaker
+                      strong End of Registration &amp; Proposal Due
+                      br
+                      | Due at Midnight
+                    |                 
+                    p Details to come.
+                // event details ends!
+              // single event ends!
+            // day ends!
+            // day
+            #tabs-2.day
+              // single event
+              .event
+                // event time
+                .event-time
+                  strong March 22nd
+                  span
+                // event time ends!
+                // event details
+                .event-info
+                  div
+                    h4 Finalist Teams Selected
+                // event details ends!
+              // single event ends!
+              // single event
+              .event.extend
+                // event time
+                .event-time
+                  strong March 23rd - 31st
+                  |  
+                  span
+                    i.fa.fa-angle-up
+                // event time ends!
+                // event details
+                .event-info
+                  div
+                    h4
+                      a(href='#') Incubator Workshops and Office Hours
+                    |                 
+                    p.speaker
+                      strong Texas Convergent
+                      br
+                      | Student Run Incubator
+                // event details ends!
+              // single event ends!
+            // day ends!
+            // day
+            #tabs-3.day
+              // single event
+              .event
+                // event time
+                .event-time
+                  strong April 1
+                  span
+                // event time ends!
+                // event details
+                .event-info
+                  div
+                    h4 Details to Come Soon
+                // event details ends!
+              // single event ends!
+            // day ends!
+      // schedule ends!
+      a#speakers.anchor
+      // speakers
+      .speakers
+        .container
+          h2 The Judges
+          |         
+          p.subtitle Opportunity to meet and pitch to the titans of the industry
+          | &#x9;&#x9;&#x9;
+          p.subtitle  Coming Soon!
+          // featured ends!
+          // speaker
+          //
+            <div class="single">
+            <img src="images/member_placeholder.jpg" alt="" />
+            <div>
+            <h3>Jennifer<br />Smith</h3>
+            <p><strong>Web developer</strong></p>
+            <p>Lorem Ipsum Dolor Sit Amanet Duis non sem nisi Phasellus iaculis placerat neque id fringilla.</p>
+            <p><a href="#"><i class="fa fa-twitter fa-lg"></i></a> <a href="#"><i class="fa fa-linkedin fa-lg"></i></a></p>
+            </div>
+            </div>
+          // speaker ends!
+          // speaker
+          //
+            <div class="single">
+            <img src="images/member_placeholder.jpg" alt="" />
+            <div>
+            <h3>Mike<br />Jonson</h3>
+            <p><strong>Frontend developer</strong></p>
+            <p>Lorem Ipsum Dolor Sit Amanet Duis non sem nisi Phasellus iaculis placerat neque id fringilla.</p>
+            </div>
+            </div>
+          // speaker ends!
+          // speaker
+          //
+            <div class="single">
+            <img src="images/member_placeholder.jpg" alt="" />
+            <div>
+            <h3>Todd<br />Johnson</h3>
+            <p><strong>Frontend developer</strong></p>
+            <p>Lorem Ipsum Dolor Sit Amanet Duis non sem nisi Phasellus iaculis placerat neque id fringilla.</p>
+            </div>
+            </div>
+          // speaker ends!
+          // speaker
+          //
+            <div class="single">
+            <img src="images/member_placeholder.jpg" alt="" />
+            <div>
+            <h3>Jessica<br />Smith</h3>
+            <p><strong>Frontend developer</strong></p>
+            <p>Lorem Ipsum Dolor Sit Amanet Duis non sem nisi Phasellus iaculis placerat neque id fringilla.</p>
+            </div>
+            </div>
+          // speaker ends!
+          // speaker
+          //
+            <div class="single">
+            <img src="images/member_placeholder.jpg" alt="" />
+            <div>
+            <h3>Lusi<br />Smith</h3>
+            <p><strong>Frontend developer</strong></p>
+            <p>Lorem Ipsum Dolor Sit Amanet Duis non sem nisi Phasellus iaculis placerat neque id fringilla.</p>
+            </div>
+            </div>
+          // speaker ends!
+      // speakers ends!
+      // why
+      .why
+        .container
+          //
+            <div class="testimonials">
+            <h4>Testimonials</h4>
+            <div class="slides">
+            <blockquote>
+            Quisque gravida libero sodales augue luctus elementum. In tristique faucibus diam, sit amet ultrices erat porttitor ut. Phasellus sit amet lorem sit amet orci lobortis mattis. Nulla venenatis, quam vitae pellentesque sollicitudin, erat enim varius nisl, sed porta augue mi et dui.
+            <cite>Mike Jonson<br /><span>Frontend Developer</span></cite>
+            </blockquote>
+            <blockquote>Quisque gravida libero sodales augue luctus elementum. In tristique faucibus diam, sit amet ultrices erat porttitor ut. Phasellus sit amet lorem sit amet orci lobortis mattis. Nulla venenatis, quam vitae pellentesque sollicitudin, erat enim varius nisl, sed porta augue mi et dui.
+            <cite>Jennifer Jonson<br /><span>Frontend Developer</span></cite>
+            </blockquote>
+            <blockquote>
+            Quisque gravida libero sodales augue luctus elementum. In tristique faucibus diam, sit amet ultrices erat porttitor ut. Phasellus sit amet lorem sit amet orci lobortis mattis. Nulla venenatis, quam vitae pellentesque sollicitudin, erat enim varius nisl, sed porta augue mi et dui.
+            <cite>Smith Jonson<br /><span>Frontend Developer</span></cite>
+            </blockquote>
+            </div>
+            </div>
+          .bullets
+            h3 Why is this conference for you?
+            |           
+            div
+              h4.why-title
+                i.fa.fa-check
+                |  Kickstart your idea
+              |             
+              p Build out your business idea and a comprehensive pitch
+            |           
+            div
+              h4.why-title
+                i.fa.fa-check
+                |  Gain valuable experience
+              |             
+              p
+                | Work with engineering, computer science, and business students to conduct extensive business analysis and create mockups
+            |           
+            div
+              h4.why-title
+                i.fa.fa-check
+                |  Start your business
+              |             
+              p
+                | Pitch your business to a panel of potential investors and influential judges to receive seed funding or partnerships
+            |           
+            div
+              h4.why-title
+                i.fa.fa-check
+                |  Change the world
+              |             
+              p
+                | Historically, it has been the combination of students from varying backgrounds with the common goal of innovation that has driven the most creative ideas and products.
+      // why ends!
+      a#registration.anchor
+      // registration
+      .registration
+        .container
+          h2 Registration
+          |       
+          p.subtitle
+            | Registration ends 
+            strong March 22nd
+          // prices
+          a(href='http://www.texasusit.org/register')
+            .price
+              div
+                p.amount $60
+                |           
+                h4(style='color: black;')
+                  | Refundable 
+                  span(style='color: #2c2e33') Registration Fee
+                |           
+                p Registration Fee is refunded once your team sends a proposal in by March 22nd
+          // prices ends!
+      // registration ends!
+      a#sponsors.anchor
+      // sponsors
+      .sponsors
+        .container
+          h2 Sponsors &amp; Partners
+          |       
+          p.subtitle
+            | Interested in becoming a sponsor? 
+            a.open-contact-form(href='#') Get in touch
+          //
+            Sponsor Slides
+            <div class="slides">
+            <ul>
+            <li><a href="#"><img src="images/3docean-light-background.png" /></a></li>
+            <li><a href="#"><img src="images/activeden-light-background.png" /></a></li>
+            <li><a href="#"><img src="images/graphicriver-light-background.png" /></a></li>
+            <li><a href="#"><img src="images/videohive-light-background.png" /></a></li>
+            </ul>
+            </div>
+      // sponsors ends!
+      a#location.anchor
+      // location
+      .location
+        .container
+          h2 Location and Venue
+          |       
+          p.subtitle The University of Texas at Austin
+          // info
+          .info
+            .maps
+              .images
+                img#location-image(src='images/sac-scene1.jpg')
+              // do not remove ends!
+            |         
+            .address
+              h4 The Pitch Day will be held on campus at the University of Texas
+              |           
+              h5(style='font-size: 28px;')
+                i.fa.fa-chevron-right
+                |  Venue
+              |           
+              .venue
+                p
+                  span
+                    a(href='https://www.google.com/maps/place/University+of+Texas+at+Austin,+Austin,+TX/@30.2859573,-97.7404374,15z/data=!3m1!4b1!4m5!3m4!1s0x8644b59a91b6ed65:0x1127f4ad837647e0!8m2!3d30.2850284!4d-97.7335226') University of Texas at Austin
+                |             
+                p 2110 Speedway
+                |             
+                p Austin, TX 78705
+              //
+                <h5><i class="fa fa-chevron-right"></i> Nearby Accomodation</h5>
+                <div class="venue">
+                <p><span>Town and Country Resort & Convention Center</span></p>
+                <p>500 Hotel Circle North</p>
+                <p>San Diego, CA 92108</p>
+                <a href="#">Book Online</a>
+                </div>
+                <div class="venue">
+                <p><span>Town and Country Resort & Convention Center</span></p>
+                <p>500 Hotel Circle North</p>
+                <p>San Diego, CA 92108</p>
+                <a href="#">Book Online</a>
+                </div>
+                <div class="venue">
+                <p><span>Town and Country Resort & Convention Center</span></p>
+                <p>500 Hotel Circle North</p>
+                <p>San Diego, CA 92108</p>
+                <a href="#">Book Online</a>
+                </div>
+              h5
+                i.fa.fa-chevron-right
+                |  Additional details
+              |           
+              p Coming Soon
+          // info ends!
+      // location ends!
+      a#contact.anchor
+      // social
+      .social
+        .container
+          div
+            h2 Contact Us
+            |         
+            p.subtitle Signup to our Slack Team
+            |    
+            |             
+            .col-md-4.contacts
+              p.contact-names Sunny Pamidimukkala
+              | &#x9;&#x9;&#x9;&#x9;
+              p
+                i USIT - President
+              | &#x9;&#x9;&#x9;&#x9;
+              a(href='mailto:president@usiteam.org')
+                i.fa.fa-envelope(aria-hidden='true')
+                |  president@usiteam.org
+            |         &#x9;
+            .col-md-4.contacts
+              p.contact-names Joseph Lee
+              | &#x9;&#x9;&#x9;&#x9;
+              p
+                i USIT - Vice President
+              | &#x9;&#x9;&#x9;&#x9;
+              a(href='mailto:vicepresident@usiteam.org?Subject=Question about Shark Tank')
+                i.fa.fa-envelope(aria-hidden='true')
+                |  vicepresident@usiteam.org
+            | &#x9;&#x9;  &#x9;
+            .col-md-4.contacts
+              p.contact-names Arjo Mozumder
+              | &#x9;&#x9;&#x9;&#x9;
+              p
+                i Convergent - President
+              | &#x9;&#x9;&#x9;&#x9;
+              a(href='mailto:president@txconvergent.org')
+                i.fa.fa-envelope(aria-hidden='true')
+                |  president@txconvergent.org
+            | &#x9;&#x9;  
+            .col-md-4.contacts
+              a(href='https://texassharktank.slack.com/shared_invite/MTUwNjAzMTcxMjA0LTE0ODg4NDk4ODktYzEwY2RjMGUzYg')
+                p.contact-names Public Slack Team
+                | &#x9;&#x9;&#x9;&#x9;  
+                img(src='images/slack-logo.png', width='175px;')
+            //
+              <form action="" method="post">
+              <input type="text" name="name" placeholder="Enter your email address" />
+              <button name="submit" type="submit"><i class="fa fa-arrow-circle-right"></i></button>
+              </form>
+              <a href="#"><i class="fa fa-facebook"></i></a>
+      // social ends!
+      // footer
+      .footer
+        .container
+          div
+            img(src='images/usit_logo_black.png', height='50px')
+          |       
+          div
+            p
+              | Copyright 2017 University Securities Investment Team 
+              a(href='http://texasusit.org') TexasUsit.org
+          | &#x9;&#x9;
+          div
+      // footer ends!
+    // back to top
+    .back
+      .container
+        a(href='#top')
+          i.fa.fa-angle-up.fa-3x
+    // back to top ends!
+    // contact form overlay popup
+    //
+      <div class="overlay" style="display: none;">
+      <div class="contact-form">
+      <p>Contact Us</p>
+      <p>We will get back to you as soon as possible</p>
+      <div class="form">
+      <form action="contact.php" method="post">
+      <input type="text" name="name" placeholder="Name"/>
+      <input type="text" name="email" placeholder="Email"/>
+      <textarea name="message" placeholder="Message" style="height: 75px;"></textarea>
+      <button name="submit" type="submit">Send Message</button>
+      </form>
+      </div>
+      <p class="error"></p>
+      <p class="message"></p>
+      <a href="#" class="close-contact-form"><i class="fa fa-times fa-lg"></i></a>
+      </div>
+      </div>
+    // contact form overlay popup ends!
+    // scripts
+    script(src='scripts/jquery-1.11.0.min.js')
+    script(src='scripts/jquery-ui-1.11.2/jquery-ui.min.js')
+    script(src='scripts/flexslider/jquery.flexslider-min.js')
+    script(src='scripts/jquery.parallax-1.1.3.js')
+    script(src='scripts/jquery.inview.min.js')
+    script(src='scripts/form.js')
+    script(src='scripts/theme.js')
+    script(src='scripts/register-form.js')
+    // scripts ends!
