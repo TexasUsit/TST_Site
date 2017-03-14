@@ -271,8 +271,8 @@ a {
   text-transform: uppercase; }
 
 .register-now {
-  bottom: 90px;
-  right: 0;
+  bottom: 100px;
+  right: 30px;
   text-align: right; }
   @media all and (max-width: 1180px) {
     .register-now {
