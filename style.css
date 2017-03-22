@@ -844,6 +844,13 @@ a {
 .location h2, .location .subtitle {
   padding: 0 60px; }
 
+.sponsor-logos {
+    display:flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+}
+
 .location {
   padding-top: 124px;
   position: relative;
