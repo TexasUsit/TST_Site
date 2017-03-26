@@ -171,6 +171,14 @@ a {
   @media all and (max-width: 940px) {
     .header {
       height: auto; } }
+@media all and (max-width: 375px) and (min-width:320px) {
+    .header {
+height: 1300px;}
+}
+@media all and (max-width: 320px) {
+    .header {
+height: 1600px;}
+}
   .header .container {
     padding: 60px;
     position: relative;
@@ -189,7 +197,19 @@ a {
      clip-path: polygon(0% 100%, 0% 0%, 100% 0%, 100% 80%);
      -webkit-background-size: cover;
      -moz-background-size: cover;
-     -o-background-size: cover;    
+     -o-background-size: cover;  
+}
+
+@media all and (max-width: 667px) {
+    .header .tint {
+        height: 1300px;
+    }
+    
+}
+
+@media all and (max-width: 568px) {
+    .header .tint {
+height: 1600px;}
 }
 
 #about-link,
